@@ -9998,3 +9998,5 @@ ES6_basic/node_modules/has-tostringtag/test/index.js
 ES6_basic/node_modules/has-tostringtag/test/tests.js
 ES6_basic/node_modules/has-tostringtag/test/shams/core-js.js
 ES6_basic/node_modules/has-tostringtag/test/shams/get-own-property-symbols.js
+ES6_basic/package-lock.json
+ES6_basic/package.json
