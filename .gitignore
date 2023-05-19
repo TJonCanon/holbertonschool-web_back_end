@@ -1,6 +1,7 @@
 ES6_basic/node_modules/
 ES6_promise/node_modules/
 ES6_classes/node_modules/
+ES6_data_manpulation/node_modules/
 ES6_promise/node_modules/ES6_basic/node_modules/.bin/atob
 ES6_basic/node_modules/.bin/babel-node
 ES6_basic/node_modules/.bin/browserslist
