@@ -10003,3 +10003,5 @@ ES6_basic/node_modules/has-tostringtag/test/shams/core-js.js
 ES6_basic/node_modules/has-tostringtag/test/shams/get-own-property-symbols.js
 ES6_basic/package-lock.json
 ES6_basic/package.json
+python_variable_annotations/__pycache__/0-add.cpython-38.pyc
+python_variable_annotations/0-main.py
