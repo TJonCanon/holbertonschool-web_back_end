@@ -16,4 +16,3 @@ class BasicCache(BaseCaching):
     def get(self, key):
         """ return value in cache_data linked to key """
         return self.cache_data[key] if key in self.cache_data else None
-    
