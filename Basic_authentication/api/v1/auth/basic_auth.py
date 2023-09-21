@@ -20,3 +20,18 @@ class BasicAuth(Auth):
                 or not re.search("^Basic ", authorization_header):
             return None
         return re.sub("^Basic ", "", authorization_header)
+
+
+    def decode_base64_authorization_header(
+        self, base64_authorization_header: str
+    ) -> str:
+        """ returns the decoded value of a Base64 string """
+        if not base64_authorization_header \
+                or type(base64_authorization_header) is not str:
+            return None
+        try:
+            return base64.b64decode(
+                base64_authorization_header
+            ).decode('utf-8')
+        except Exception:
+            return None
