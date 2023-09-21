@@ -6,6 +6,7 @@ import logging
 
 PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
 
+
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class
         """
@@ -43,6 +44,7 @@ def filter_datum(
             message
         )
     return message
+
 
 def get_logger() -> logging.Logger:
     """ returns a Logger object """
