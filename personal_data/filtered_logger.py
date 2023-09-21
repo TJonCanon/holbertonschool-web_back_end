@@ -45,8 +45,6 @@ def filter_datum(
             f"{field}={redaction}{separator}",
             message
         )
-
-
     return message
 
 
