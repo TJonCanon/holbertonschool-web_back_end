@@ -8,6 +8,7 @@ PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
 import mysql.connector
 import os
 
+
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class
         """
@@ -58,6 +59,7 @@ def get_logger() -> logging.Logger:
     # add the handler to the Logger and return it
     user_data.addHandler(handler)
     return user_data
+
 
 def get_db() -> mysql.connector.connection.MySQLConnection:
     """ connects to a secure holberton db to read a users table """
