@@ -5,8 +5,8 @@ from typing import List
 import logging
 
 PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
-import mysql.connector
 import os
+import mysql.connector
 
 
 class RedactingFormatter(logging.Formatter):
