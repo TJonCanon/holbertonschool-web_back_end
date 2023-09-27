@@ -33,3 +33,19 @@ class SessionAuth(Auth):
         if session_id is None or type(session_id) is not str:
             return None
         return self.user_id_by_session_id.get(session_id)
+
+    def destroy_session(self, request=None):
+        """ deletes the given user session // logs out  """
+        # Check whether request exists
+        if not request:
+            return False
+        # Check whether the request contains Session ID cookie
+        session_id = self.session_cookie(request)
+        if not session_id:
+            return False
+        # Check whether Session ID is linked to a User ID
+        user_id = self.user_id_for_session_id(session_id)
+        if not user_id:
+            return False
+        self.user_id_by_session_id.pop(session_id)
+        return True
