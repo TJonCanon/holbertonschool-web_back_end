@@ -11,6 +11,15 @@ class SessionAuth(Auth):
     """ new session authentication class inheriting from Auth """
     user_id_by_session_id = {}
 
+    def current_user(self, request=None):
+        """ returns a User instance based on a cookie value """
+        sesh = self.session_cookie(request)
+        if sesh:
+            user_id = self.user_id_for_session_id(sesh)
+            if user_id:
+                return User.get(user_id)
+        return None
+
     def create_session(self, user_id: str = None) -> str:
         """ creates a session_id for a user """
         if user_id is None or type(user_id) is not str:
