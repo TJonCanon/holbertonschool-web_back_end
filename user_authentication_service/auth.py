@@ -14,6 +14,7 @@ def _hash_password(password: str) -> str:
     """ salty hashbrowns """
     return hashpw(password.encode(), gensalt())
 
+
 class Auth:
     """ authentication class """
 
