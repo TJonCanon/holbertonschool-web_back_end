@@ -13,9 +13,11 @@ def _hash_password(password: str) -> str:
     """ salty hashbrowns """
     return hashpw(password.encode(), gensalt())
 
+
 def _generate_uuid() -> str:
     """ creates new user_id """
     return str(uuid.uuid4())
+
 
 class Auth:
     """ authentication class """
