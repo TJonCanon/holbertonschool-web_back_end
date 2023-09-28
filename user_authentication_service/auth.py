@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-"""
-authentication service
-"""
+""" authentication service """
+ 
 
-
-from bcrypt import hashpw, gensalt
+from bcrypt import hashpw, gensalt, checkpw
 from db import DB
 from sqlalchemy.orm.exc import NoResultFound
 from user import User
@@ -28,3 +26,11 @@ class Auth:
             raise ValueError(f'User {email} already exists')
         except NoResultFound:
             return self._db.add_user(email, _hash_password(password))
+
+    def valid_login(self, email: str, password: str) -> bool:
+        """ checks if login attempt is valid """
+        try:
+            user = self._db.find_user_by(email=email)
+            return checkpw(password.encode(), user.hashed_password)
+        except NoResultFound:
+            return False
