@@ -38,6 +38,7 @@ def login():
     else:
         abort(401)
 
+
 @app.route("/sessions", methods=["DELETE"])
 def logout():
     """ route for logouts """
@@ -49,6 +50,7 @@ def logout():
             return redirect("/")
     abort(403)
 
+
 @app.route('/profile', methods=['GET'])
 def profile():
     """ route for profiles """
@@ -59,6 +61,7 @@ def profile():
             return jsonify({"email": user.email}), 200
     else:
         abort(403)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
