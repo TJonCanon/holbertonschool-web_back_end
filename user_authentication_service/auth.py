@@ -5,6 +5,9 @@ authentication service
 
 
 from bcrypt import hashpw, gensalt
+from db import DB
+from sqlalchemy.orm.exc import NoResultFound
+from user import User
 
 
 def _hash_password(password: str) -> str:
