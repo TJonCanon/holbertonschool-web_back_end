@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ authentication service """
- 
+
 
 from bcrypt import hashpw, gensalt, checkpw
 from db import DB
