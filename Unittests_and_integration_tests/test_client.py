@@ -63,5 +63,22 @@ class TestGithubOrgClient(unittest.TestCase):
         )
 
 
+    @parameterized_class(
+        ("org_payload", "repos_payload", "expected_repos", "apache2_repos"),
+        TEST_PAYLOAD
+    )
+    class TestIntegrationGithubOrgClient(unittest.TestCase):
+        """ TestIntegrationGithubOrgClient class """
+        @classmethod
+        def setUpClass(cls):
+            """ setUpClass method """
+            cls.get_patcher = patch('requests.get', side_effect=HTTPError)
+            cls.get_patcher.start()
+
+        @classmethod
+        def tearDownClass(cls):
+            """ tearDownClass method """
+            cls.get_patcher.stop()
+
 if __name__ == "__main__":
     unittest.main()
