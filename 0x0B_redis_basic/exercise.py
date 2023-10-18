@@ -3,7 +3,7 @@
 
 
 import redis
-from typing import Union, callable, Optional
+from typing import Union, Callable, Optional
 import uuid
 from functools import wraps
 
@@ -34,6 +34,18 @@ def call_history(method: Callable) -> Callable:
     return wrapper
 
 
+def replay(method: Callable):
+    """ replay decorator """
+    r = redis.Redis()
+    funk = method.__qualname__
+    count = r.get(funk).decode("utf-8")
+    inputs = r.lrange(funk + ":inputs", 0, -1)
+    outputs = r.lrange(funk + ":outputs", 0, -1)
+    print(f"{funk} was called {count} times:")
+    for i, o in zip(inputs, outputs):
+        print(f"{funk}(*{i.decode('utf-8')}) -> {o.decode('utf-8')}")
+
+
 class Cache():
     """ redis cache """
 
@@ -42,6 +54,7 @@ class Cache():
         self._redis.flushdb()
 
     @count_calls
+    @call_history
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """ store to redis """
         key = str(uuid.uuid4())
